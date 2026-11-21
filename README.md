@@ -7,10 +7,6 @@
 </p>
 
 <p align="center">
-  <img src="assets/telemetry.svg" alt="Telemetry: public repositories, active since 2022-11-17, stack Go Python Shell Vue" width="100%">
-</p>
-
-<p align="center">
   <img src="assets/activity.svg" alt="System load: 12-month contribution heatmap with active days, peak day and public repository count" width="100%">
 </p>
 

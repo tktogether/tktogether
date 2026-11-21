@@ -144,13 +144,5 @@ class StackTests(unittest.TestCase):
         self.assertIn("TOTAL", svg)
 
 
-class TelemetryTests(unittest.TestCase):
-    def test_nodes_token_is_replaced(self):
-        template = '<text>NODES</text><text>{{NODES}}</text>'
-        svg = gs.render_telemetry(template, fixture_data())
-        self.assertIn(">28<", svg)
-        self.assertNotIn("{{NODES}}", svg)
-
-
 if __name__ == "__main__":
     unittest.main()

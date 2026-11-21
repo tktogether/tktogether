@@ -38,6 +38,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/activity.svg assets/stack.svg assets/telemetry.svg
+          git add assets/activity.svg assets/stack.svg
           git commit -m "chore: update profile stats"
           git push
