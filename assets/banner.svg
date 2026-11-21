@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="560" viewBox="0 0 1012 560" role="img" aria-labelledby="title desc">
-  <title id="title">tktogether — Gateway Operator · Node Network</title>
-  <desc id="desc">Cinematic sci-fi hero: oversized tktogether wordmark, gateway portal, perspective grid floor.</desc>
+  <title id="title">tktogether — 全栈开发者 · 基础设施与网络工具</title>
+  <desc id="desc">科幻主视觉：tktogether 字标、SYSTEMS 背景大字、技术网格与数据栏。</desc>
   <defs>
     <radialGradient id="bgGlow" cx="810" cy="250" r="380" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#35E0F0" stop-opacity="0.16"/>

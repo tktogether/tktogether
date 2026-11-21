@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="96" viewBox="0 0 1012 96" role="img" aria-labelledby="title">
-  <title id="title">MIG 02 migrator — Linux 主机迁移系统，物理机 / VPS / 内网机之间迁移</title>
+  <title id="title">迁移 02 migrator — Linux 主机迁移系统，物理机 / VPS / 内网机之间迁移</title>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }

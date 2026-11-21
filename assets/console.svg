@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="280" viewBox="0 0 1012 280" role="img" aria-labelledby="title desc">
-  <title id="title">System console — tktogether-node boot sequence</title>
-  <desc id="desc">Boot log: 内核握手 完成, 网络链路已建立, 工具链模块已加载, 项目索引已同步. Uplink status secure.</desc>
+  <title id="title">系统控制台 — tktogether 启动序列</title>
+  <desc id="desc">启动日志：内核握手完成、网络链路已建立、工具链模块已加载、项目索引已同步；链路状态已加密。</desc>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="96" viewBox="0 0 1012 96" role="img" aria-labelledby="title">
-  <title id="title">GATE 01 warden-gateway — 统一 HTTPS 入口、管理面板、Docker 与 GitHub 代理</title>
+  <title id="title">网关 01 warden-gateway — 统一 HTTPS 入口、管理面板、Docker 与 GitHub 代理</title>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }

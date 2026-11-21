@@ -213,8 +213,8 @@ def build_activity_svg(data):
             )
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1012" height="430" viewBox="0 0 1012 430" role="img" aria-labelledby="title desc">
-  <title id="title">System Load — Activity</title>
-  <desc id="desc">Contribution heatmap for the last 12 months: {data["total_contributions"]} contributions, {data["active_days"]} active days, peak {data["peak_day"]} in one day.</desc>
+  <title id="title">系统负载 — 活跃度</title>
+  <desc id="desc">近 12 个月贡献热力图：{data["total_contributions"]} 次贡献、{data["active_days"]} 个活跃日、单日峰值 {data["peak_day"]} 次。</desc>
   <defs>
     <linearGradient id="scanBeam" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#35E0F0" stop-opacity="0"/>
@@ -314,8 +314,8 @@ def build_stack_svg(data):
         x += width + 2
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1012" height="260" viewBox="0 0 1012 260" role="img" aria-labelledby="title desc">
-  <title id="title">Module Distribution — language volume</title>
-  <desc id="desc">Code volume by language across {data["original_repos"]} public original repositories: {", ".join(f"{name} {size / total * 100:.1f}%" for name, size in segments)}.</desc>
+  <title id="title">模块分布 — 语言体量</title>
+  <desc id="desc">{data["original_repos"]} 个公开原创仓库的代码体量占比：{", ".join(f"{name if name != 'Other' else '其他'} {size / total * 100:.1f}%" for name, size in segments)}。</desc>
   <rect x="0.5" y="0.5" width="1011" height="259" fill="{PANEL}" stroke="{CYAN}" stroke-opacity="0.25"/>
   <text x="24" y="34" font-family="{MONO}" font-size="9" letter-spacing="3" fill="{CYAN}" fill-opacity="0.8">模块分布</text>
   <text x="24" y="64" font-family="{SANS}" font-size="20" font-weight="600" fill="{TEXT}">语言体量</text>

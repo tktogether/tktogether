@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="96" viewBox="0 0 1012 96" role="img" aria-labelledby="title">
-  <title id="title">LLM 04 llmio — 统一的 LLM 网关：权重负载均衡、可观测性与费用追踪</title>
+  <title id="title">模型 04 llmio — 统一的 LLM 网关：权重负载均衡、可观测性与费用追踪</title>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }
