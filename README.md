@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="TKTOGETHER — Gateway Operator · Node Network" width="100%">
+  <img src="assets/banner.svg" alt="tktogether — Developer · Infrastructure and Network Tooling" width="100%">
 </p>
 
 <p align="center">
-  <img src="assets/console.svg" alt="System console: tktogether-node boot sequence, gateway uplink established" width="100%">
+  <img src="assets/console.svg" alt="System console: tktogether boot sequence, network uplink established" width="100%">
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/section-nodes.svg" alt="Node Registry — 4 entries" width="100%">
+  <img src="assets/section-nodes.svg" alt="Project Registry — 4 active modules" width="100%">
 </p>
 
 <p align="center">

@@ -125,8 +125,8 @@ class ActivityTests(unittest.TestCase):
 
     def test_month_labels_and_title(self):
         svg = gs.build_activity_svg(fixture_data())
-        self.assertIn("SYSTEM LOAD // ACTIVITY", svg)
-        self.assertIn(">JAN<", svg)
+        self.assertIn("系统负载 · 活跃度", svg)
+        self.assertIn(">1月<", svg)
 
 
 class StackTests(unittest.TestCase):
@@ -137,11 +137,11 @@ class StackTests(unittest.TestCase):
 
     def test_language_labels_and_totals(self):
         svg = gs.build_stack_svg(fixture_data())
-        for label in ["GO", "PYTHON", "VUE"]:
+        for label in ["Go", "Python", "Vue"]:
             self.assertIn(label, svg)
-        self.assertIn("LANGUAGE VOLUME", svg)
+        self.assertIn("语言体量", svg)
         self.assertIn("%", svg)
-        self.assertIn("TOTAL", svg)
+        self.assertIn("合计", svg)
 
 
 if __name__ == "__main__":

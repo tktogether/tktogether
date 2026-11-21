@@ -8,7 +8,7 @@
   </defs>
   <path d="M0 0 H1012 V144 L976 180 H0 Z" fill="#070B10" fill-opacity="0.95" stroke="#35E0F0" stroke-opacity="0.18"/>
   <rect x="0" y="0" width="3" height="180" fill="#35E0F0" fill-opacity="0.4"/>
-  <text x="976" y="150" text-anchor="end" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="120" font-weight="700" letter-spacing="-4" fill="none" stroke="#35E0F0" stroke-opacity="0.06">EXIT</text>
+  <text x="976" y="150" text-anchor="end" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="120" font-weight="700" letter-spacing="-4" fill="none" stroke="#35E0F0" stroke-opacity="0.06">终</text>
 
   <g stroke="#35E0F0" stroke-opacity="0.22">
     <line x1="24" y1="40" x2="470" y2="40"/>
@@ -16,10 +16,10 @@
   </g>
   <path d="M506 32 L514 40 L506 48 L498 40 Z" fill="#070B10" stroke="#35E0F0" stroke-opacity="0.45"/>
 
-  <text x="506" y="82" text-anchor="middle" class="sans" font-size="22" font-weight="600" letter-spacing="6" fill="#E8F6F8">END OF TRANSMISSION</text>
-  <text x="506" y="110" text-anchor="middle" class="mono" font-size="9" letter-spacing="2.2" fill="#5E7478">TKTOGETHER // NODE NETWORK · EST. 2022</text>
-  <text x="506" y="140" text-anchor="middle" class="mono" font-size="10" fill="#35E0F0" fill-opacity="0.6">&gt; connection closed by remote host_</text>
+  <text x="506" y="82" text-anchor="middle" class="sans" font-size="22" font-weight="600" letter-spacing="6" fill="#E8F6F8">传输结束</text>
+  <text x="506" y="110" text-anchor="middle" class="mono" font-size="9" letter-spacing="2.2" fill="#5E7478">tktogether · 全栈开发 · 始于 2022</text>
+  <text x="506" y="140" text-anchor="middle" class="mono" font-size="10" fill="#35E0F0" fill-opacity="0.6">&gt; 连接已关闭_</text>
 
-  <text x="24" y="164" class="mono" font-size="8" letter-spacing="1.4" fill="#5E7478">UPTIME // 2022.11.17 →</text>
-  <text x="988" y="164" text-anchor="end" class="mono" font-size="8" letter-spacing="1.4" fill="#5E7478">SIGNAL // CLOSED</text>
+  <text x="24" y="164" class="mono" font-size="8" letter-spacing="1.4" fill="#5E7478">运行时长 · 2022.11.17 →</text>
+  <text x="988" y="164" text-anchor="end" class="mono" font-size="8" letter-spacing="1.4" fill="#5E7478">信号 · 已关闭</text>
 </svg>

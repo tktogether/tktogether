@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="560" viewBox="0 0 1012 560" role="img" aria-labelledby="title desc">
-  <title id="title">TKTOGETHER — Gateway Operator · Node Network</title>
-  <desc id="desc">Cinematic sci-fi hero: oversized TKTOGETHER wordmark, gateway portal, perspective grid floor.</desc>
+  <title id="title">tktogether — Gateway Operator · Node Network</title>
+  <desc id="desc">Cinematic sci-fi hero: oversized tktogether wordmark, gateway portal, perspective grid floor.</desc>
   <defs>
     <radialGradient id="bgGlow" cx="810" cy="250" r="380" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#35E0F0" stop-opacity="0.16"/>
@@ -72,65 +72,89 @@
   </g>
   <rect x="0" y="400" width="1012" height="160" fill="url(#floorFade)"/>
 
-  <text x="56" y="190" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="210" font-weight="700" letter-spacing="-8" fill="none" stroke="#35E0F0" stroke-opacity="0.07">GATEWAY</text>
+  <text x="56" y="190" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="210" font-weight="700" letter-spacing="-8" fill="none" stroke="#35E0F0" stroke-opacity="0.07">系统</text>
 
-  <g font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="86" font-weight="700" letter-spacing="2">
-    <text x="52" y="252" fill="#FF3D81" fill-opacity="0.35">TKTOGETHER</text>
-    <text x="60" y="256" fill="#35E0F0" fill-opacity="0.35">TKTOGETHER</text>
-    <text x="56" y="254" fill="#EAF7F9">TKTOGETHER</text>
+  <g font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="92" font-weight="600" letter-spacing="1">
+    <text x="52" y="252" fill="#FF3D81" fill-opacity="0.35">tktogether</text>
+    <text x="60" y="256" fill="#35E0F0" fill-opacity="0.35">tktogether</text>
+    <text x="56" y="254" fill="#EAF7F9">tktogether</text>
   </g>
 
   <line x1="56" y1="286" x2="420" y2="286" stroke="#35E0F0" stroke-opacity="0.7"/>
-  <text x="56" y="316" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="13" letter-spacing="4" fill="#35E0F0">GATEWAY OPERATOR // NODE NETWORK</text>
+  <text x="56" y="316" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="13" letter-spacing="4" fill="#35E0F0">全栈开发者 · 基础设施与网络工具</text>
 
   <g font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace">
     <circle class="pulse" cx="62" cy="362" r="4" fill="#7CF0B0"/>
-    <text x="78" y="367" font-size="11" letter-spacing="2.5" fill="#7CF0B0">NODE // ONLINE</text>
-    <text x="220" y="367" font-size="11" letter-spacing="2" fill="#5E7478">SINCE 2022.11.17</text>
-    <text x="56" y="466" font-size="10" letter-spacing="2" fill="#5E7478">SYS.01 // GATEWAY CONTROL</text>
+    <text x="78" y="367" font-size="11" letter-spacing="2.5" fill="#7CF0B0">在线 · 可访问</text>
+    <text x="300" y="367" font-size="11" letter-spacing="2" fill="#5E7478">始于 2022.11.17</text>
+    <text x="56" y="466" font-size="10" letter-spacing="2" fill="#5E7478">tktogether · 个人主页</text>
   </g>
 
   <line x1="0" y1="510" x2="1012" y2="510" stroke="#35E0F0" stroke-opacity="0.25"/>
-  <text x="24" y="536" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#5E7478">GATEWAY OPERATOR · NODE NETWORK · SIGNAL STABLE</text>
-  <text x="988" y="536" text-anchor="end" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#35E0F0" fill-opacity="0.6">EST. 2022</text>
+  <text x="24" y="536" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#5E7478">全栈开发 · 基础设施 · 网络工具 · 开源</text>
+  <text x="988" y="536" text-anchor="end" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="2" fill="#35E0F0" fill-opacity="0.6">始于 2022</text>
 
   <g stroke="#35E0F0" stroke-opacity="0.14" stroke-width="1">
     <line x1="660" y1="-20" x2="1020" y2="240"/>
     <line x1="700" y1="-20" x2="1020" y2="190"/>
   </g>
 
-  <g stroke="#35E0F0" stroke-opacity="0.1">
-    <line x1="620" y1="250" x2="1000" y2="250"/>
-    <line x1="800" y1="60" x2="800" y2="440"/>
+  <g stroke="#35E0F0" stroke-opacity="0.06">
+    <line x1="640" y1="120" x2="1012" y2="120"/>
+    <line x1="640" y1="200" x2="1012" y2="200"/>
+    <line x1="640" y1="280" x2="1012" y2="280"/>
+    <line x1="640" y1="360" x2="1012" y2="360"/>
+    <line x1="640" y1="440" x2="1012" y2="440"/>
+    <line x1="680" y1="40" x2="680" y2="520"/>
+    <line x1="760" y1="40" x2="760" y2="520"/>
+    <line x1="840" y1="40" x2="840" y2="520"/>
+    <line x1="920" y1="40" x2="920" y2="520"/>
   </g>
 
-  <g class="rot60" fill="none" stroke="#35E0F0" stroke-opacity="0.25">
-    <circle cx="800" cy="250" r="196" stroke-dasharray="1 15"/>
+  <line x1="650" y1="520" x2="1012" y2="180" stroke="#FF3D81" stroke-opacity="0.22"/>
+  <line x1="640" y1="80" x2="640" y2="520" stroke="#35E0F0" stroke-opacity="0.18"/>
+
+  <text transform="translate(986 60) rotate(90)" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="3.4" fill="#35E0F0" fill-opacity="0.55">tktogether · 系统与网络</text>
+
+  <g font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="9" fill="#35E0F0" fill-opacity="0.26">
+    <text x="700" y="150">Go</text>
+    <text x="700" y="178">Python</text>
+    <text x="700" y="206">Shell</text>
+    <text x="700" y="234">Vue</text>
+    <text x="700" y="262">Linux</text>
+    <text x="700" y="290">Docker</text>
+    <text x="700" y="318">Git</text>
+    <text x="700" y="346">CI</text>
+    <text x="700" y="374">同步</text>
+    <text x="700" y="402">正常</text>
+    <text x="700" y="430">连接</text>
+    <text x="700" y="458">TLS</text>
+    <text x="790" y="164">01001101</text>
+    <text x="790" y="192">11010010</text>
+    <text x="790" y="220">00110111</text>
+    <text x="790" y="248">10101001</text>
+    <text x="790" y="276">01110010</text>
+    <text x="790" y="304">11001101</text>
+    <text x="790" y="332">00101011</text>
+    <text x="790" y="360">10010110</text>
+    <text x="790" y="388">01101101</text>
   </g>
 
-  <g class="rot90" fill="#071016" stroke="#35E0F0" stroke-opacity="0.45">
-    <path d="M959.8 258.4 A160 160 0 0 1 887.1 384.2 L841.4 313.7 A76 76 0 0 0 875.9 254.0 Z"/>
-    <path d="M872.6 392.6 A160 160 0 0 1 727.4 392.6 L765.5 317.7 A76 76 0 0 0 834.5 317.7 Z"/>
-    <path d="M712.9 384.2 A160 160 0 0 1 640.2 258.4 L724.1 254.0 A76 76 0 0 0 758.6 313.7 Z"/>
-    <path d="M640.2 241.6 A160 160 0 0 1 712.9 115.8 L758.6 186.3 A76 76 0 0 0 724.1 246.0 Z"/>
-    <path d="M727.4 107.4 A160 160 0 0 1 872.6 107.4 L834.5 182.3 A76 76 0 0 0 765.5 182.3 Z"/>
-    <path d="M887.1 115.8 A160 160 0 0 1 959.8 241.6 L875.9 246.0 A76 76 0 0 0 841.4 186.3 Z"/>
-  </g>
-
-  <rect x="796" y="70" width="8" height="360" fill="url(#beamGrad)"/>
-
-  <g fill="none" stroke="#35E0F0">
-    <circle cx="800" cy="250" r="64" stroke-opacity="0.55"/>
-    <circle cx="800" cy="250" r="52" stroke-opacity="0.2"/>
-  </g>
-
-  <polygon points="800,206 838,228 838,272 800,294 762,272 762,228" fill="#04060A" stroke="#35E0F0" stroke-opacity="0.6"/>
-  <polygon points="800,222 825,236 825,264 800,278 775,264 775,236" fill="#35E0F0" fill-opacity="0.10" stroke="#35E0F0" stroke-opacity="0.3"/>
-  <circle cx="800" cy="250" r="12" fill="#EAFDFF" fill-opacity="0.5" filter="url(#softGlow)"/>
-  <circle cx="800" cy="250" r="3" fill="#EAFDFF"/>
-
-  <g class="sweep" opacity="0.8">
-    <rect x="640" y="250" width="320" height="1.5" fill="#35E0F0" opacity="0.45"/>
+  <g fill="#35E0F0" fill-opacity="0.3">
+    <rect x="900" y="486" width="2" height="26"/>
+    <rect x="906" y="486" width="5" height="26"/>
+    <rect x="915" y="486" width="2" height="26"/>
+    <rect x="921" y="486" width="1" height="26"/>
+    <rect x="926" y="486" width="6" height="26"/>
+    <rect x="936" y="486" width="2" height="26"/>
+    <rect x="942" y="486" width="4" height="26"/>
+    <rect x="950" y="486" width="1" height="26"/>
+    <rect x="955" y="486" width="5" height="26"/>
+    <rect x="964" y="486" width="2" height="26"/>
+    <rect x="970" y="486" width="3" height="26"/>
+    <rect x="977" y="486" width="6" height="26"/>
+    <rect x="987" y="486" width="2" height="26"/>
+    <rect x="993" y="486" width="4" height="26"/>
   </g>
 
   <rect width="1012" height="560" fill="url(#scan)"/>

@@ -20,7 +20,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 
-MONO = "Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace"
+MONO = "Consolas, 'SFMono-Regular', Menlo, 'Courier New', 'Microsoft YaHei', monospace"
 SANS = "'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif"
 CYAN = "#35E0F0"
 TEXT = "#E8F6F8"
@@ -28,7 +28,7 @@ MUTED = "#5E7478"
 MID = "#9FB4B8"
 PANEL = "#070C12"
 LEVEL_COLORS = ["#0C161C", "#103A42", "#176E7A", "#22B6C4", "#35E0F0"]
-MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+MONTHS = [f"{i}月" for i in range(1, 13)]
 LANG_COLORS = {
     "Python": "#FFB454",
     "TypeScript": "#7C9CFF",
@@ -151,27 +151,15 @@ def _month_of(date_text):
 def build_activity_svg(data):
     x0, y0, pitch, size = 48, 250, 18, 14
     cells = []
-    peak_index = None
-    peak_count = -1
     for week_index, week in enumerate(data["weeks"]):
         for day_index, count in enumerate(week["days"]):
             level = _level(count, data["peak_day"])
+            delay = 0.35 + week_index * 0.06
             cells.append(
                 f'<rect class="cell" x="{x0 + week_index * pitch}" y="{y0 + day_index * pitch}" '
-                f'width="{size}" height="{size}" rx="1" fill="{LEVEL_COLORS[level]}"/>'
+                f'width="{size}" height="{size}" rx="1" fill="{LEVEL_COLORS[level]}" '
+                f'style="animation-delay:{delay:.2f}s"/>'
             )
-            if count > peak_count:
-                peak_count = count
-                peak_index = (week_index, day_index)
-
-    highlight = ""
-    if peak_index and peak_count > 0:
-        px = x0 + peak_index[0] * pitch - 2
-        py = y0 + peak_index[1] * pitch - 2
-        highlight = (
-            f'<rect x="{px}" y="{py}" width="{size + 4}" height="{size + 4}" rx="1" '
-            f'fill="none" stroke="#FFB454" stroke-opacity="0.85"/>'
-        )
 
     month_labels = []
     previous = None
@@ -187,14 +175,14 @@ def build_activity_svg(data):
         previous = month
 
     weekdays = []
-    for row, name in [(1, "MON"), (3, "WED"), (5, "FRI")]:
+    for row, name in [(1, "一"), (3, "三"), (5, "五")]:
         weekdays.append(
             f'<text x="20" y="{y0 + row * pitch + 11}" font-family="{MONO}" font-size="8" '
             f'letter-spacing="1" fill="{MUTED}">{name}</text>'
         )
 
     legend = [
-        f'<text x="48" y="408" font-family="{MONO}" font-size="8" letter-spacing="1.4" fill="{MUTED}">LESS</text>'
+        f'<text x="48" y="408" font-family="{MONO}" font-size="8" letter-spacing="1.4" fill="{MUTED}">少</text>'
     ]
     for index, color in enumerate(LEVEL_COLORS[1:]):
         legend.append(
@@ -202,13 +190,13 @@ def build_activity_svg(data):
         )
     legend.append(
         f'<text x="{90 + 5 * 14}" y="408" font-family="{MONO}" font-size="8" '
-        f'letter-spacing="1.4" fill="{MUTED}">MORE</text>'
+        f'letter-spacing="1.4" fill="{MUTED}">多</text>'
     )
 
     metrics = [
-        ("ACTIVE DAYS", data["active_days"]),
-        ("PEAK DAY", data["peak_day"]),
-        ("PUBLIC REPOS", data["public_repos"]),
+        ("活跃天数", data["active_days"]),
+        ("单日峰值", data["peak_day"]),
+        ("公开仓库", data["public_repos"]),
     ]
     metric_parts = []
     for index, (label, value) in enumerate(metrics):
@@ -228,27 +216,36 @@ def build_activity_svg(data):
   <title id="title">System Load — Activity</title>
   <desc id="desc">Contribution heatmap for the last 12 months: {data["total_contributions"]} contributions, {data["active_days"]} active days, peak {data["peak_day"]} in one day.</desc>
   <defs>
+    <linearGradient id="scanBeam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#35E0F0" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#35E0F0" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#35E0F0" stop-opacity="0"/>
+    </linearGradient>
     <style>
-      .scan {{ animation: scan 9s linear infinite; transform-box: fill-box; transform-origin: left center; }}
-      @keyframes scan {{ from {{ transform: translateX(0); }} to {{ transform: translateX(942px); }} }}
-      @media (prefers-reduced-motion: reduce) {{ .scan {{ animation: none; opacity: 0; }} }}
+      .cell {{ animation: cellin 0.22s ease-out both; }}
+      .scanbeam {{ animation: beam 3.6s linear 0.3s forwards; transform-box: fill-box; transform-origin: left center; }}
+      @keyframes cellin {{ from {{ opacity: 0; }} to {{ opacity: 1; }} }}
+      @keyframes beam {{ 0% {{ transform: translateX(0); opacity: 0; }} 8% {{ opacity: 0.5; }} 92% {{ opacity: 0.5; }} 100% {{ transform: translateX(920px); opacity: 0; }} }}
+      @media (prefers-reduced-motion: reduce) {{
+        .cell {{ animation: none; }}
+        .scanbeam {{ animation: none; opacity: 0; }}
+      }}
     </style>
   </defs>
   <rect x="0.5" y="0.5" width="1011" height="429" fill="{PANEL}" stroke="{CYAN}" stroke-opacity="0.25"/>
-  <text x="24" y="34" font-family="{MONO}" font-size="9" letter-spacing="3" fill="{CYAN}" fill-opacity="0.8">SYSTEM LOAD // ACTIVITY</text>
-  <text x="24" y="62" font-family="{SANS}" font-size="20" font-weight="600" fill="{TEXT}">CONTRIBUTION MATRIX — LAST 12 MONTHS</text>
-  <text x="988" y="34" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">LIVE // AUTO-SYNCED</text>
+  <text x="24" y="34" font-family="{MONO}" font-size="9" letter-spacing="3" fill="{CYAN}" fill-opacity="0.8">系统负载 · 活跃度</text>
+  <text x="24" y="62" font-family="{SANS}" font-size="20" font-weight="600" fill="{TEXT}">贡献矩阵 · 近 12 个月</text>
+  <text x="988" y="34" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">实时 · 自动同步</text>
   <text x="24" y="150" font-family="{MONO}" font-size="92" fill="{TEXT}">{data["total_contributions"]}</text>
-  <text x="24" y="176" font-family="{MONO}" font-size="9" letter-spacing="2.2" fill="{CYAN}" fill-opacity="0.7">CONTRIBUTIONS</text>
+  <text x="24" y="176" font-family="{MONO}" font-size="9" letter-spacing="2.2" fill="{CYAN}" fill-opacity="0.7">贡献</text>
   {"".join(metric_parts)}
   <line x1="24" y1="196" x2="988" y2="196" stroke="{CYAN}" stroke-opacity="0.18"/>
   {"".join(month_labels)}
   {"".join(weekdays)}
   {"".join(cells)}
-  {highlight}
-  <rect class="scan" x="48" y="250" width="2" height="126" fill="{CYAN}" fill-opacity="0.25"/>
+  <g class="scanbeam"><rect x="48" y="250" width="48" height="126" fill="url(#scanBeam)"/></g>
   {"".join(legend)}
-  <text x="988" y="408" text-anchor="end" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">AUTO-SYNCED VIA GITHUB ACTIONS</text>
+  <text x="988" y="408" text-anchor="end" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">由 GitHub Actions 自动同步</text>
   <g stroke="{CYAN}" stroke-opacity="0.3" fill="none">
     <path d="M10 16 V10 H16"/>
     <path d="M996 10 H1002 V16"/>
@@ -299,7 +296,7 @@ def build_stack_svg(data):
         columns.append(
             f'<text x="{left}" y="128" font-family="{MONO}" font-size="52" fill="{color}">{label}</text>'
             f'<text x="{left}" y="156" font-family="{MONO}" font-size="10" letter-spacing="2" '
-            f'fill="{TEXT}">{name.upper()}</text>'
+            f'fill="{TEXT}">{(name if name != "Other" else "其他")}</text>'
             f'<text x="{left}" y="176" font-family="{MONO}" font-size="9" letter-spacing="1" '
             f'fill="{MUTED}">{_human_bytes(size)}</text>'
         )
@@ -320,14 +317,14 @@ def build_stack_svg(data):
   <title id="title">Module Distribution — language volume</title>
   <desc id="desc">Code volume by language across {data["original_repos"]} public original repositories: {", ".join(f"{name} {size / total * 100:.1f}%" for name, size in segments)}.</desc>
   <rect x="0.5" y="0.5" width="1011" height="259" fill="{PANEL}" stroke="{CYAN}" stroke-opacity="0.25"/>
-  <text x="24" y="34" font-family="{MONO}" font-size="9" letter-spacing="3" fill="{CYAN}" fill-opacity="0.8">MODULE DISTRIBUTION</text>
-  <text x="24" y="64" font-family="{SANS}" font-size="20" font-weight="600" fill="{TEXT}">LANGUAGE VOLUME</text>
-  <text x="988" y="34" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{data["original_repos"]} PUBLIC ORIGINALS · LIVE</text>
-  <text x="988" y="58" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{len(segments)} LANGUAGES</text>
+  <text x="24" y="34" font-family="{MONO}" font-size="9" letter-spacing="3" fill="{CYAN}" fill-opacity="0.8">模块分布</text>
+  <text x="24" y="64" font-family="{SANS}" font-size="20" font-weight="600" fill="{TEXT}">语言体量</text>
+  <text x="988" y="34" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{data["original_repos"]} 个公开原创 · 实时</text>
+  <text x="988" y="58" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{len(segments)} 种语言</text>
   {"".join(columns)}
   {"".join(parts)}
-  <text x="24" y="240" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">CODE BYTES BY LANGUAGE · FORKS EXCLUDED</text>
-  <text x="988" y="240" text-anchor="end" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">TOTAL {_human_bytes(total)}</text>
+  <text x="24" y="240" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">按代码字节统计 · 不含 fork</text>
+  <text x="988" y="240" text-anchor="end" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">合计 {_human_bytes(total)}</text>
   <g stroke="{CYAN}" stroke-opacity="0.3" fill="none">
     <path d="M10 16 V10 H16"/>
     <path d="M996 10 H1002 V16"/>

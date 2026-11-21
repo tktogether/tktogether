@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="280" viewBox="0 0 1012 280" role="img" aria-labelledby="title desc">
   <title id="title">System console — tktogether-node boot sequence</title>
-  <desc id="desc">Boot log: kernel handshake complete, gateway uplink established, warden modules mounted, node registry synced. Uplink status secure.</desc>
+  <desc id="desc">Boot log: 内核握手 完成, 网络链路已建立, 工具链模块已加载, 项目索引已同步. Uplink status secure.</desc>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }
@@ -28,7 +28,7 @@
   <rect x="0.5" y="0.5" width="1011" height="279" fill="#070C12" stroke="#35E0F0" stroke-opacity="0.25"/>
   <rect x="0" y="0" width="1012" height="34" fill="#0A1218"/>
   <line x1="0" y1="34" x2="1012" y2="34" stroke="#35E0F0" stroke-opacity="0.2"/>
-  <text x="16" y="22" class="mono" font-size="11" letter-spacing="2" fill="#9FB4B8">SYSTEM CONSOLE // tktogether-node</text>
+  <text x="16" y="22" class="mono" font-size="11" letter-spacing="2" fill="#9FB4B8">系统控制台 // tktogether</text>
   <g fill="none" stroke="#35E0F0" stroke-opacity="0.3">
     <rect x="948" y="13" width="8" height="8"/>
     <rect x="966" y="13" width="8" height="8"/>
@@ -37,19 +37,19 @@
 
   <g class="mono" font-size="15">
     <g class="line l1">
-      <text x="24" y="72"><tspan fill="#35E0F0">&gt; </tspan><tspan fill="#E8F6F8">boot tktogether-node</tspan></text>
+      <text x="24" y="72"><tspan fill="#35E0F0">&gt; </tspan><tspan fill="#E8F6F8">启动 tktogether</tspan></text>
     </g>
     <g class="line l2">
-      <text x="24" y="102"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> kernel handshake </tspan><tspan fill="#5E7478">.................</tspan><tspan fill="#9FB4B8"> complete</tspan></text>
+      <text x="24" y="102"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> 内核握手 </tspan><tspan fill="#5E7478">.................</tspan><tspan fill="#9FB4B8"> 完成</tspan></text>
     </g>
     <g class="line l3">
-      <text x="24" y="132"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> gateway uplink established</tspan></text>
+      <text x="24" y="132"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> 网络链路已建立</tspan></text>
     </g>
     <g class="line l4">
-      <text x="24" y="162"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> warden modules mounted</tspan></text>
+      <text x="24" y="162"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> 工具链模块已加载</tspan></text>
     </g>
     <g class="line l5">
-      <text x="24" y="192"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> node registry synced</tspan></text>
+      <text x="24" y="192"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> 项目索引已同步</tspan></text>
     </g>
     <g class="line l6">
       <text x="24" y="232" fill="#35E0F0">&gt;</text>
@@ -60,24 +60,24 @@
   <line x1="660" y1="54" x2="660" y2="240" stroke="#35E0F0" stroke-opacity="0.18"/>
 
   <g class="mono">
-    <text x="690" y="76" font-size="9" letter-spacing="2.4" fill="#35E0F0" fill-opacity="0.75">UPLINK STATUS</text>
-    <text x="690" y="112" font-size="28" fill="#7CF0B0">SECURE</text>
+    <text x="690" y="76" font-size="9" letter-spacing="2.4" fill="#35E0F0" fill-opacity="0.75">链路状态</text>
+    <text x="690" y="112" font-size="28" fill="#7CF0B0">已加密</text>
 
-    <text x="690" y="140" font-size="8" letter-spacing="1.5" fill="#5E7478">AUTH</text>
+    <text x="690" y="140" font-size="8" letter-spacing="1.5" fill="#5E7478">认证</text>
     <rect x="760" y="134" width="200" height="6" fill="#0C161C"/>
     <rect class="bar b1" x="760" y="134" width="188" height="6" fill="#7CF0B0"/>
 
-    <text x="690" y="164" font-size="8" letter-spacing="1.5" fill="#5E7478">SYNC</text>
+    <text x="690" y="164" font-size="8" letter-spacing="1.5" fill="#5E7478">同步</text>
     <rect x="760" y="158" width="200" height="6" fill="#0C161C"/>
     <rect class="bar b2" x="760" y="158" width="164" height="6" fill="#35E0F0"/>
 
-    <text x="690" y="188" font-size="8" letter-spacing="1.5" fill="#5E7478">RELAY</text>
+    <text x="690" y="188" font-size="8" letter-spacing="1.5" fill="#5E7478">中继</text>
     <rect x="760" y="182" width="200" height="6" fill="#0C161C"/>
     <rect class="bar b3" x="760" y="182" width="176" height="6" fill="#35E0F0"/>
 
-    <text x="690" y="216" font-size="8" letter-spacing="1.5" fill="#5E7478">NODE REGISTRY SYNCED // 04 MODULES</text>
+    <text x="690" y="216" font-size="8" letter-spacing="1.5" fill="#5E7478">项目索引已同步 · 04 个模块</text>
   </g>
 
-  <text x="24" y="258" class="mono" font-size="8" letter-spacing="1.2" fill="#5E7478">PROTOCOL // TLS 1.3 · AES-256</text>
-  <text x="988" y="258" text-anchor="end" class="mono" font-size="8" letter-spacing="1.2" fill="#5E7478">tktogether-node // SIGNAL STABLE</text>
+  <text x="24" y="258" class="mono" font-size="8" letter-spacing="1.2" fill="#5E7478">协议 // TLS 1.3 · AES-256</text>
+  <text x="988" y="258" text-anchor="end" class="mono" font-size="8" letter-spacing="1.2" fill="#5E7478">tktogether // 信号稳定</text>
 </svg>
