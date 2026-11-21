@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="86" viewBox="0 0 1012 86" role="img" aria-labelledby="title">
-  <title id="title">TOOL-03 warden-toolbox — Warden 系列维护脚本工具箱，含 Gateway / Node Warden 入口与 BBR</title>
+  <title id="title">LLM-04 llmio — 统一的 LLM 网关：权重负载均衡、可观测性与费用追踪</title>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }
@@ -14,9 +14,9 @@
     <path d="M10 70 V76 H16"/>
     <path d="M996 76 H1002 V70"/>
   </g>
-  <text x="24" y="50" class="mono" font-size="12" letter-spacing="2" fill="#FFB454">TOOL-03</text>
-  <text x="140" y="44" class="sans" font-size="17" font-weight="600" fill="#E8F6F8">warden-toolbox</text>
-  <text x="140" y="66" class="sans" font-size="12" fill="#9FB4B8">Warden 系列维护脚本工具箱，含 Gateway / Node Warden 入口与 BBR</text>
+  <text x="24" y="50" class="mono" font-size="12" letter-spacing="2" fill="#FFB454">LLM-04</text>
+  <text x="140" y="44" class="sans" font-size="17" font-weight="600" fill="#E8F6F8">llmio</text>
+  <text x="140" y="66" class="sans" font-size="12" fill="#9FB4B8">统一的 LLM 网关：权重负载均衡、可观测性与费用追踪</text>
   <circle cx="926" cy="43" r="3" fill="#7CF0B0"/>
   <text x="988" y="47" text-anchor="end" class="mono" font-size="10" letter-spacing="1.5" fill="#7CF0B0">OPEN →</text>
 </svg>

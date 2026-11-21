@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1012" height="170" viewBox="0 0 1012 170" role="img" aria-labelledby="title desc">
-  <title id="title">Telemetry — 28 public repositories, active since 2022-11-17</title>
-  <desc id="desc">Four telemetry cells: NODES 28, UPTIME 2022.11.17, GATEWAY warden-gateway open, STACK Go Python Shell Vue.</desc>
+  <title id="title">Telemetry — public repositories and stack</title>
+  <desc id="desc">Four telemetry cells: NODES live count, UPTIME 2022.11.17, GATEWAY warden-gateway open, STACK Go Python Shell Vue.</desc>
   <defs>
     <style>
       .mono { font-family: Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace; }

@@ -126,7 +126,7 @@
   <text x="64" y="196" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif" font-size="64" font-weight="300" letter-spacing="8" fill="#E8F6F8">TKTOGETHER</text>
   <line x1="64" y1="222" x2="364" y2="222" stroke="#35E0F0" stroke-opacity="0.6"/>
   <text x="64" y="250" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="13" letter-spacing="3.5" fill="#35E0F0" fill-opacity="0.9">GATEWAY OPERATOR · NODE NETWORK</text>
-  <text x="64" y="360" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="1.5" fill="#5E7478">SINCE 2022.11.17 · 28 PUBLIC NODES · LINK STABLE</text>
+  <text x="64" y="360" font-family="Consolas, 'SFMono-Regular', Menlo, 'Courier New', monospace" font-size="10" letter-spacing="1.5" fill="#5E7478">SINCE 2022.11.17 · NODE NETWORK · LINK STABLE</text>
 
   <g fill="none" stroke="#35E0F0" stroke-opacity="0.3">
     <rect x="700" y="342" width="248" height="30" rx="2"/>

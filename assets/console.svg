@@ -44,7 +44,7 @@
       <text x="24" y="158"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> warden modules mounted</tspan></text>
     </g>
     <g class="line l5">
-      <text x="24" y="188"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> node registry synced (28 entries)</tspan></text>
+      <text x="24" y="188"><tspan fill="#7CF0B0">[ OK ]</tspan><tspan fill="#9FB4B8"> node registry synced</tspan></text>
     </g>
     <g class="line l6">
       <text x="24" y="218" fill="#35E0F0">&gt;</text>
