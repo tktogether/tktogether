@@ -33,6 +33,20 @@ jobs:
       - name: Commit if changed
         run: |
           if git diff --quiet; then
+            # GitHub disables scheduled workflows after 60 days without repo
+            # activity. Touch a heartbeat file when the repo has been idle for
+            # 45 days so the schedule keeps running.
+            last=$(git log -1 --format=%ct)
+            now=$(date +%s)
+            if [ $(( (now - last) / 86400 )) -ge 45 ]; then
+              date -u +%Y-%m-%d > .github/stats-heartbeat.txt
+              git add .github/stats-heartbeat.txt
+              git config user.name "github-actions[bot]"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git commit -m "chore: keep stats workflow active"
+              git push
+              exit 0
+            fi
             echo "No stats changes"
             exit 0
           fi

@@ -4,7 +4,7 @@
 Run from the repository root with GITHUB_TOKEN set:
     GITHUB_TOKEN=... PROFILE_LOGIN=tktogether python scripts/generate_stats.py
 
-Writes assets/activity.svg, assets/stack.svg and assets/telemetry.svg.
+Writes assets/activity.svg and assets/stack.svg.
 No third-party dependencies.
 """
 
@@ -40,7 +40,7 @@ LANG_COLORS = {
 }
 
 QUERY = """
-query($login: String!) {
+query($login: String!, $cursor: String) {
   user(login: $login) {
     contributionsCollection {
       contributionCalendar {
@@ -53,12 +53,13 @@ query($login: String!) {
     allRepos: repositories(privacy: PUBLIC, ownerAffiliations: OWNER, first: 1) {
       totalCount
     }
-    ownRepos: repositories(privacy: PUBLIC, ownerAffiliations: OWNER, isFork: false, first: 100) {
+    ownRepos: repositories(privacy: PUBLIC, ownerAffiliations: OWNER, isFork: false, first: 100, after: $cursor) {
       totalCount
+      pageInfo { hasNextPage endCursor }
       nodes {
         name
         primaryLanguage { name }
-        languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+        languages(first: 25, orderBy: {field: SIZE, direction: DESC}) {
           edges { size node { name } }
         }
       }
@@ -69,30 +70,44 @@ query($login: String!) {
 
 
 def fetch_payload(login, token):
-    body = json.dumps({"query": QUERY, "variables": {"login": login}}).encode()
-    request = urllib.request.Request(
-        "https://api.github.com/graphql",
-        data=body,
-        headers={
-            "Authorization": f"Bearer {token}",
-            "Content-Type": "application/json",
-            "User-Agent": "tktogether-profile-stats",
-        },
-        method="POST",
-    )
-    last_error = None
-    for attempt in range(3):
-        try:
-            with urllib.request.urlopen(request, timeout=60) as response:
-                payload = json.loads(response.read().decode())
-            break
-        except Exception as error:
-            last_error = error
-            time.sleep(2)
-    else:
-        raise last_error
-    if "errors" in payload:
-        raise RuntimeError(payload["errors"])
+    def request_page(cursor):
+        body = json.dumps({"query": QUERY, "variables": {"login": login, "cursor": cursor}}).encode()
+        req = urllib.request.Request(
+            "https://api.github.com/graphql",
+            data=body,
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json",
+                "User-Agent": "tktogether-profile-stats",
+            },
+            method="POST",
+        )
+        last_error = None
+        for _ in range(3):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as response:
+                    payload = json.loads(response.read().decode())
+                break
+            except Exception as error:
+                last_error = error
+                time.sleep(2)
+        else:
+            raise last_error
+        if "errors" in payload:
+            raise RuntimeError(payload["errors"])
+        return payload
+
+    payload = request_page(None)
+    user = payload["data"]["user"]
+    own = user["ownRepos"]
+    nodes = list(own["nodes"])
+    cursor = own["pageInfo"]["endCursor"]
+    while own["pageInfo"]["hasNextPage"]:
+        payload = request_page(cursor)
+        own = payload["data"]["user"]["ownRepos"]
+        nodes.extend(own["nodes"])
+        cursor = own["pageInfo"]["endCursor"]
+    user["ownRepos"]["nodes"] = nodes
     return payload
 
 
@@ -257,8 +272,11 @@ def build_activity_svg(data):
 
 
 def _allocate_widths(segments, total_width, gap):
+    total = sum(c for _, c in segments)
+    if total <= 0:
+        return [0 for _ in segments]
     available = total_width - gap * (len(segments) - 1)
-    exact = [available * c / sum(c for _, c in segments) for _, c in segments]
+    exact = [available * c / total for _, c in segments]
     widths = [int(value) for value in exact]
     remainder = available - sum(widths)
     order = sorted(range(len(exact)), key=lambda i: exact[i] - widths[i], reverse=True)
@@ -269,6 +287,19 @@ def _allocate_widths(segments, total_width, gap):
 
 def _segment_widths(svg):
     return re.findall(r'<rect class="seg"[^>]*width="([0-9.]+)"', svg)
+
+
+def _percentages(segments):
+    total = sum(size for _, size in segments)
+    if total <= 0:
+        return [0.0 for _ in segments]
+    raw = [size / total * 1000 for _, size in segments]
+    floors = [int(value) for value in raw]
+    remainder = 1000 - sum(floors)
+    order = sorted(range(len(raw)), key=lambda i: raw[i] - floors[i], reverse=True)
+    for index in order[:remainder]:
+        floors[index] += 1
+    return [value / 10 for value in floors]
 
 
 def _human_bytes(value):
@@ -286,13 +317,13 @@ def build_stack_svg(data):
     segments = data["languages"]
     total = sum(size for _, size in segments) or 1
     widths = _allocate_widths(segments, 964, 2)
+    percents = _percentages(segments)
 
     columns = []
     for index, (name, size) in enumerate(segments):
         left = 24 + index * 160
         color = LANG_COLORS.get(name, LANG_COLORS["Other"])
-        percent = size / total * 100
-        label = f"{percent:.0f}%" if percent >= 10 else f"{percent:.1f}%"
+        label = f"{percents[index]:.1f}%"
         columns.append(
             f'<text x="{left}" y="128" font-family="{MONO}" font-size="52" fill="{color}">{label}</text>'
             f'<text x="{left}" y="156" font-family="{MONO}" font-size="10" letter-spacing="2" '
@@ -315,12 +346,12 @@ def build_stack_svg(data):
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1012" height="260" viewBox="0 0 1012 260" role="img" aria-labelledby="title desc">
   <title id="title">模块分布 — 语言体量</title>
-  <desc id="desc">{data["original_repos"]} 个公开原创仓库的代码体量占比：{", ".join(f"{name if name != 'Other' else '其他'} {size / total * 100:.1f}%" for name, size in segments)}。</desc>
+  <desc id="desc">{data["original_repos"]} 个公开原创仓库的代码体量占比：{", ".join(f"{name if name != 'Other' else '其他'} {percent:.1f}%" for (name, size), percent in zip(segments, _percentages(segments)))}。</desc>
   <rect x="0.5" y="0.5" width="1011" height="259" fill="{PANEL}" stroke="{CYAN}" stroke-opacity="0.25"/>
   <text x="24" y="34" font-family="{MONO}" font-size="9" letter-spacing="3" fill="{CYAN}" fill-opacity="0.8">模块分布</text>
   <text x="24" y="64" font-family="{SANS}" font-size="20" font-weight="600" fill="{TEXT}">语言体量</text>
   <text x="988" y="34" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{data["original_repos"]} 个公开原创 · 实时</text>
-  <text x="988" y="58" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{len(segments)} 种语言</text>
+  <text x="988" y="58" text-anchor="end" font-family="{MONO}" font-size="9" letter-spacing="1.6" fill="{MUTED}">{sum(1 for name, _ in segments if name != "Other")} 种语言{(" + 其他" if any(name == "Other" for name, _ in segments) else "")}</text>
   {"".join(columns)}
   {"".join(parts)}
   <text x="24" y="240" font-family="{MONO}" font-size="8" letter-spacing="1.2" fill="{MUTED}">按代码字节统计 · 不含 fork</text>

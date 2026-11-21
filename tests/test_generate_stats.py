@@ -1,3 +1,4 @@
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -142,6 +143,18 @@ class StackTests(unittest.TestCase):
         self.assertIn("语言体量", svg)
         self.assertIn("%", svg)
         self.assertIn("合计", svg)
+
+    def test_zero_language_bytes_do_not_crash(self):
+        data = fixture_data()
+        data["languages"] = [("Other", 0)]
+        svg = gs.build_stack_svg(data)
+        self.assertIn("0.0%", svg)
+
+    def test_percentages_sum_to_100(self):
+        svg = gs.build_stack_svg(fixture_data())
+        percents = [float(value) for value in re.findall(r">([0-9.]+)%<", svg)]
+        self.assertTrue(percents)
+        self.assertAlmostEqual(sum(percents), 100.0, delta=0.05)
 
 
 if __name__ == "__main__":
